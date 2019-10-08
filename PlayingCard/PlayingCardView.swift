@@ -8,10 +8,14 @@
 
 import UIKit
 
+@IBDesignable
 class PlayingCardView: UIView {
    
+    @IBInspectable
     var rank: Int = 5 { didSet { setNeedsDisplay(); setNeedsLayout()} }
+    @IBInspectable
     var suit: String = "❤️" { didSet { setNeedsDisplay(); setNeedsLayout()} }
+    @IBInspectable
     var isFaceUp: Bool = true { didSet { setNeedsDisplay(); setNeedsLayout()} }
     
     private func centeredAttributedString(_ string: String, fontSize: CGFloat) -> NSAttributedString {
@@ -43,6 +47,11 @@ class PlayingCardView: UIView {
         label.isHidden = !isFaceUp
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        setNeedsDisplay()
+        setNeedsLayout()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -63,6 +72,12 @@ class PlayingCardView: UIView {
         roundedRect.addClip()
         UIColor.white.setFill()
         roundedRect.fill()
+        
+        if !isFaceUp {
+            if let cardBackImage = UIImage(named: "cardback", in: Bundle(for: self.classForCoder), compatibleWith: traitCollection) {
+                cardBackImage.draw(in: bounds)
+            }
+        }
     }
 
 }

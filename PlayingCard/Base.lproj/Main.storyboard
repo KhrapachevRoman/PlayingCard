@@ -17,21 +17,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ngP-vD-QVY" customClass="PlayingCardView" customModule="PlayingCard" customModuleProvider="target">
-                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <rect key="frame" x="20" y="154" width="374" height="598"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ngP-vD-QVY" secondAttribute="height" multiplier="5:8" id="Mf7-oy-o4w"/>
+                                    <constraint firstAttribute="width" priority="250" constant="800" id="ct1-6y-jez"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rank">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isFaceUp" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="sEX-Sz-OTK" appends="YES" id="hdW-io-Y4q"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ngP-vD-QVY" secondAttribute="trailing" constant="20" id="GpA-Vk-Ye5"/>
-                            <constraint firstItem="ngP-vD-QVY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="mWh-2B-IDW"/>
-                            <constraint firstItem="ngP-vD-QVY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qhX-uu-AUH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ngP-vD-QVY" secondAttribute="bottom" id="rss-Eb-HTF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ngP-vD-QVY" secondAttribute="trailing" constant="20" id="GpA-Vk-Ye5"/>
+                            <constraint firstItem="ngP-vD-QVY" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="joK-tX-bro"/>
+                            <constraint firstItem="ngP-vD-QVY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="mWh-2B-IDW"/>
+                            <constraint firstItem="ngP-vD-QVY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="qhX-uu-AUH"/>
+                            <constraint firstItem="ngP-vD-QVY" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="r9g-jB-ARx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ngP-vD-QVY" secondAttribute="bottom" constant="20" id="rss-Eb-HTF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="playingCardView" destination="ngP-vD-QVY" id="3sF-wY-iSV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="sEX-Sz-OTK">
+                    <connections>
+                        <action selector="flipCard:" destination="BYZ-38-t0r" id="cvy-Ra-CYJ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="120.53571428571428"/>
         </scene>
